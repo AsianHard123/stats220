@@ -4,8 +4,11 @@ meme_text <- image_blank(width = 500, height = 50, color = "#000000") %>% #Creat
   image_annotate(text = "When my owner walks past without giving me a cuddle", color = "#FFFFFF", size = 20, gravity = "center")
 meme_image <- image_read("https://i.kym-cdn.com/entries/icons/original/000/048/010/side_eye_cat.jpg") %>% #Scailing image to fit block of text
   image_scale(500)
+
+#Producing the static meme
 meme_vector <- c(meme_text, meme_image)
 meme <- image_append(meme_vector, stack = TRUE) #Combining image and block of text
+
 meme
 
 image_write(meme, "static_meme.png") #Saving meme as a png file
@@ -28,6 +31,8 @@ frame4 <- image_read("https://i.redd.it/si6diz4wjqqb1.jpg") %>%
 frame2_wtxt <- image_append(c(meme_text, frame2), stack = TRUE)
 frame3_wtxt <- image_append(c(meme_text, frame3), stack = TRUE)
 frame4_wtxt <- image_append(c(meme_text, frame4), stack = TRUE)
+
+#Producing the gif
 frames <- c(frame1, frame2_wtxt, frame3_wtxt, frame4_wtxt)
 gif <- image_animate(frames, fps = 1)
 gif
