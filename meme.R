@@ -4,9 +4,10 @@ meme_text <- image_blank(width = 500, height = 50, color = "#000000") %>%
 meme_image <- image_read("https://i.kym-cdn.com/entries/icons/original/000/048/010/side_eye_cat.jpg") %>%
   image_scale(500)
 meme_vector <- c(meme_text, meme_image)
-meme <- image_append(meme_vector, stack = TRUE)
+meme <- image_append(meme_vector, stack = TRUE) 
 meme
 image_write(meme, "static_meme.png")
+#static image meme
 
 frame1 <- meme
 frame2 <- image_read("https://media.tenor.com/a467V24M0IUAAAAe/cat-bombastic-side-eye.png") %>%
@@ -26,3 +27,4 @@ frames <- c(frame1, frame2_wtxt, frame3_wtxt, frame4_wtxt)
 gif <- image_animate(frames, fps = 1)
 gif
 image_write(gif, "gif_meme.gif")
+#gif meme code
