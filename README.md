@@ -7,7 +7,7 @@ This repo will contain all the work and projects assigned to me during **semeste
 
 ## Projects
 1. Meme creation
-2. *More to come later on in the semester*
+2. ***More to come later on in the semester***
 
 ## Basic facts about me
 - I am half Chinese and half Samoan
