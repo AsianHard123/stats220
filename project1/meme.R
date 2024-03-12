@@ -8,7 +8,6 @@ meme_image <- image_read("https://i.kym-cdn.com/entries/icons/original/000/048/0
 #Producing the static meme
 meme_vector <- c(meme_text, meme_image)
 meme <- image_append(meme_vector, stack = TRUE) #Combining image and block of text
-
 meme
 
 image_write(meme, "static_meme.png") #Saving meme as a png file

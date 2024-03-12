@@ -1,0 +1,87 @@
+---
+title: "Creating images with R"
+author: "Ethan Sio"
+output: html_document
+subtitle: "with a little bit of magick"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{css}
+body {
+  background-color: #7B6D8D;
+  color: #EC9688;
+  font-family: "Park Avenue";
+}
+
+h1 {
+  background-color: #000000;
+  padding: 2px;
+}
+
+pre {
+  background-color:#EC9688;
+}
+```
+
+## Project requirements
+During the Part A it allowed to me practice what I had learnt in the lectures when learning markdown, which really allowed me to consolidate my knowledge on it. In my README.md files I completed all the requirements for the task.I used 2 different levels of headers header 1 being "Stats 220" and header 2 being all the other sub headers. I used the ordered list to list down the current projects done in stats 220 and also list my favorite papers this semester in order, as just a general idea of me.I then used the unordered list to say just plain simple facts about me as this will be my repo for stats 220.I then used bolding to emphasize the parts that I think are important but used both bold and italics on "More to come later on in the semester" to further emphasize the importance in it. I then linked my linkedin page, just for i guess more connections and also more info about me.
+
+## My meme
+![Inspo Meme](/Users/ethansio/Documents/Stats 220/Project 1/stats220/inspo_meme.jpeg)\
+For my inspo meme the key components that I took from the image is the animal with attitude, and also the text which is like a point of view of what the animal will be thinking towards its owners.
+```{r meme-code, eval=TRUE}
+library(magick)
+#static image meme
+meme_text <- image_blank(width = 500, height = 50, color = "#000000") %>% #Creating Block for text
+  image_annotate(text = "When my owner walks past without giving me a cuddle", color = "#FFFFFF", size = 20, gravity = "center")
+meme_image <- image_read("https://i.kym-cdn.com/entries/icons/original/000/048/010/side_eye_cat.jpg") %>% #Scailing image to fit block of text
+  image_scale(500)
+
+#Producing the static meme
+meme_vector <- c(meme_text, meme_image)
+meme <- image_append(meme_vector, stack = TRUE) #Combining image and block of text
+meme
+
+image_write(meme, "static_meme.png") #Saving meme as a png file
+```
+
+
+```{r animation-code, eval=FALSE}
+#gif meme code
+
+#Creating frames for the gif
+frame1 <- meme
+frame2 <- image_read("https://media.tenor.com/a467V24M0IUAAAAe/cat-bombastic-side-eye.png") %>%
+  image_scale(500) %>%
+  image_resize("500x500") #resizing so that all frames are the same
+frame3 <- image_read("https://assets.coingecko.com/coins/images/34354/large/photo_2024-01-07_21.44.19.jpeg?1704703981") %>%
+  image_scale(500) %>%
+  image_resize("500x500") #resizing so that all frames are the same
+frame4 <- image_read("https://i.redd.it/si6diz4wjqqb1.jpg") %>%
+  image_scale(500) %>%
+  image_resize("500x500") #resizing so that all frames are the same
+
+#Appending the block of code to each frame
+frame2_wtxt <- image_append(c(meme_text, frame2), stack = TRUE)
+frame3_wtxt <- image_append(c(meme_text, frame3), stack = TRUE)
+frame4_wtxt <- image_append(c(meme_text, frame4), stack = TRUE)
+
+#Producing the gif
+frames <- c(frame1, frame2_wtxt, frame3_wtxt, frame4_wtxt)
+gif <- image_animate(frames, fps = 1)
+gif
+
+image_write(gif, "gif_meme.gif") #Saving meme as a gif
+```
+![gif](/Users/ethansio/Documents/Stats 220/Project 1/stats220/gif_meme.gif)
+
+## Creativity
+So what I did for this project, is that I used the same idea of the meme being about what the possible thoughts of a animal towards their owner could be in a certain situation. So the perfect thing for this for me is a side-eye cat. They side-eye basically portrays the like attitude the cat is showing to its owner all most like it being sassy. I think the creativity is shown through my use of more current type humour has the "side-eye" is a rather popular thing via tiktok.I also decided to do for a cat, as I would say genreally cats are usually portrayed more evil then dogs. But with this idea that cat are portrayed as more evil then dogs I used the caption to show that cats are also cute and also deserve love and arnt allways as portrayed. 
+
+## Learning reflection
+One of the most important ideas that I learned during module 1 is the process on making a gif using R, by producing each frame separately using a image/text for them, then combing them into one and using image_animate to produce a gif out of these combined frames.By learning more R I am now curious to find out how far R code can go and how much that R code is able to do once you are very proficient and efficient with all there is to do with R.
+
+
