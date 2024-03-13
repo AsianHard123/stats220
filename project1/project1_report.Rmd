@@ -35,7 +35,7 @@ During the Part A it allowed to me practice what I had learnt in the lectures wh
 
 ## My meme
 ![Inspo Meme](/Users/ethansio/Documents/Stats 220/stats220/project1/inspo_meme.jpeg)\
-For my inspo meme the key components that I took from the image is the animal with attitude, and also the text which is like a point of view of what the animal will be thinking towards its owners. The main things I changed was I used a differnt animal that had differnte expressions allowing me to keep the core of this meme but changing it up a bit.
+For my inspo meme the key components that I took from the image is the animal with attitude, and also the text which is like a point of view of what the animal will be thinking towards its owners. The main things I changed was I used a different animal that had different expressions allowing me to keep the core of this meme but changing it up a bit.
 ```{r meme-code, eval=TRUE}
 library(magick)
 #static image meme
